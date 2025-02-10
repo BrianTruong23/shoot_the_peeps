@@ -7,6 +7,12 @@ var score
 var score_count
 
 
+func _ready():
+	var nodes_to_hide = [$SafeZone, $Wall, $Wall2, $Wall4, $Wall5, $Wall6, $Boxes]
+	for node in nodes_to_hide:
+		node.hide()
+	
+
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
 	var mob = mob_scene.instantiate()
@@ -52,6 +58,7 @@ func new_game() -> void:
 	get_tree().call_group(&"mobs", &"queue_free")
 	score = 0
 	Global.enemy_kill_count = 0
+	$Player.is_game_running = true 
 	
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -59,12 +66,20 @@ func new_game() -> void:
 	$HUD.show_message("Get Ready")
 	$Music.play()
 	$SafeZone.show()
+	$Wall.show()
+	$Wall2.show()
+	$Wall4.show()
+	$Wall5.show()
+	$Wall6.show()
+	$Boxes.show()
 
 
 
 func game_over() -> void:
+	$Player.is_game_running = false
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
+	

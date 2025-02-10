@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ci4ond3j4gdvf" path="res://mob.tscn" id="2_y32v0"]
 [ext_resource type="PackedScene" uid="uid://dcic3kk0haiy2" path="res://hud.tscn" id="3_4x8je"]
 [ext_resource type="Texture2D" uid="uid://cjpkq5y6n8s7q" path="res://assets/sprites/world_tileset.png" id="5_g3qbh"]
-[ext_resource type="Script" path="res://safe_zone.gd" id="6_mmq1g"]
 [ext_resource type="PackedScene" uid="uid://wetk11g0wk4g" path="res://boxes.tscn" id="7_ee08b"]
 [ext_resource type="PackedScene" uid="uid://iut24tdwlhae" path="res://wall.tscn" id="8_xqidd"]
 
@@ -197,11 +196,19 @@ texture = ExtResource("5_g3qbh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_82shb")
 
+[sub_resource type="GDScript" id="GDScript_0c5xt"]
+script/source = "extends TileMap
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	hide()
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjfwa"]
 size = Vector2(15, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26742"]
-size = Vector2(92, 15.5)
+size = Vector2(124, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duywm"]
 size = Vector2(15, 61)
@@ -248,8 +255,8 @@ stream = SubResource("AudioStreamWAV_g6rki")
 [node name="SafeZone" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wlc8f")
 format = 2
-layer_0/tile_data = PackedInt32Array(196629, 196608, 0, 196630, 196608, 0, 196631, 196608, 0, 196632, 196608, 0, 262169, 196608, 0, 327705, 196608, 0, 393241, 196608, 0, 262164, 196608, 0, 327700, 196608, 0, 393236, 196608, 0, 196628, 458752, 0, 196633, 458752, 0, 458777, 196608, 0, 524313, 196608, 0)
-script = ExtResource("6_mmq1g")
+layer_0/tile_data = PackedInt32Array(196629, 196608, 0, 196630, 196608, 0, 196631, 196608, 0, 196632, 196608, 0, 262164, 196608, 0, 327700, 196608, 0, 393236, 196608, 0, 196628, 458752, 0, 196633, 458752, 0, 196634, 196608, 0, 196635, 196608, 0, 262171, 196608, 0, 327707, 196608, 0, 393243, 196608, 0)
+script = SubResource("GDScript_0c5xt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="SafeZone"]
 position = Vector2(332, 60)
@@ -259,11 +266,11 @@ position = Vector2(-4.5, 20.5)
 shape = SubResource("RectangleShape2D_sjfwa")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SafeZone/StaticBody2D"]
-position = Vector2(36, -3.75)
+position = Vector2(52, -3.75)
 shape = SubResource("RectangleShape2D_26742")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="SafeZone/StaticBody2D"]
-position = Vector2(76.5, 20.5)
+position = Vector2(109, 20)
 shape = SubResource("RectangleShape2D_duywm")
 
 [node name="Boxes" parent="." instance=ExtResource("7_ee08b")]

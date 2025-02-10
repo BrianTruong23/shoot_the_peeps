@@ -5,7 +5,7 @@ signal hit
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 var facing_direction: Vector2 = Vector2(1, 0)  # Default to facing right.
-
+var is_game_running = true  # Default to true at the start of the game
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -64,6 +64,9 @@ func _input(event):
 		shoot_bullet()
 		
 func shoot_bullet():
+	if not is_game_running:  # Prevent shooting bullets if the game is over
+		return
+		
 	# Load the bullet scene and create an instance.
 	var bullet_scene = preload("res://bullet.tscn")
 	var bullet = bullet_scene.instantiate()
