@@ -248,7 +248,7 @@ stream = SubResource("AudioStreamWAV_g6rki")
 [node name="SafeZone" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wlc8f")
 format = 2
-layer_0/tile_data = PackedInt32Array(196629, 196608, 0, 196630, 196608, 0, 196631, 196608, 0, 196632, 196608, 0, 262169, 196608, 0, 327705, 196608, 0, 393241, 196608, 0, 262164, 196608, 0, 327700, 196608, 0, 393236, 196608, 0, 196628, 458752, 0, 196633, 458752, 0)
+layer_0/tile_data = PackedInt32Array(196629, 196608, 0, 196630, 196608, 0, 196631, 196608, 0, 196632, 196608, 0, 262169, 196608, 0, 327705, 196608, 0, 393241, 196608, 0, 262164, 196608, 0, 327700, 196608, 0, 393236, 196608, 0, 196628, 458752, 0, 196633, 458752, 0, 458777, 196608, 0, 524313, 196608, 0)
 script = ExtResource("6_mmq1g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="SafeZone"]
@@ -267,7 +267,7 @@ position = Vector2(76.5, 20.5)
 shape = SubResource("RectangleShape2D_duywm")
 
 [node name="Boxes" parent="." instance=ExtResource("7_ee08b")]
-position = Vector2(71, 161)
+position = Vector2(168, 144)
 mass = 0.1
 
 [node name="Wall" parent="." instance=ExtResource("8_xqidd")]

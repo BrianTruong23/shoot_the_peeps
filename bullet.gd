@@ -12,3 +12,18 @@ func _physics_process(delta):
 	var viewport_rect = get_viewport_rect()
 	if position.x < -250 or position.x > viewport_rect.size.x:
 		queue_free()
+
+
+func _on_body_entered(_body):
+	print("Collided with", _body.name)
+	if _body.name.begins_with("Mob"):
+		_body.queue_free()
+		
+		Global.enemy_kill_count += 1
+		
+		$CollisionShape2D.set_deferred("disabled", true)
+		queue_free()
+		
+	if not _body.name.begins_with("Player"):
+		$CollisionShape2D.set_deferred("disabled", true)
+		queue_free()

@@ -50,9 +50,7 @@ func start(pos):
 	
 # Detect collision with enemies
 func _on_body_entered(_body):
-	print("Area2D detected collision with:", _body.name)
 	if _body.name.begins_with("Mob"):
-		print("GET Hit")
 		hide()
 		hit.emit()
 		$CollisionShape2D.set_deferred("disabled", true)

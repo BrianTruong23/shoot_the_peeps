@@ -2,6 +2,10 @@ extends CanvasLayer
 
 signal start_game
 
+func _process(delta):
+	# Update the label text every frame using the global enemy kill count.
+	$EnemyCountLabel.text = str(Global.enemy_kill_count)
+
 func show_message(text):
 	$MessageLabel.text = text
 	$MessageLabel.show()
